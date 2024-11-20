@@ -3,69 +3,31 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Anonymous Messages to Discord</title>
-    <link rel="stylesheet" href="style.css">
+    <title>PrettyFunny - Milkymattheww</title>
+    <link rel="stylesheet" href="profile.css">
 </head>
 <body>
-    <div class="container">
+    <div class="profile-container">
         <header>
-            <h1>Send a message to our server!</h1>
-            <p>here, you can send an anonymous message to our server! you can always attach your name</p>
+            <h1>Milkymattheww</h1>
+            <p>Welcome to my personal space! 🎉</p>
         </header>
         <main>
-            <form id="messageForm">
-                <input type="text" id="nameInput" placeholder="enter your name (optional)">
-                <input type="text" id="messageInput" placeholder="enter your message (required)" required>
-                <button type="submit">Send Message</button>
-            </form>
-            <p id="response"></p>
-            <button class="join-button" onclick="redirectToDiscord()">see what you sent</button>
+            <section>
+                <h2>Connect with me</h2>
+                <ul>
+                    <li><a href="https://discord.gg/coffeegang" target="_blank">Join Coffee Gang ☕</a></li>
+                    <li><a href="https://instagram.com/milkymattheww" target="_blank">Instagram 📸</a></li>
+                    <li><a href="https://snapchat.com/add/decemberperiod" target="_blank">Snapchat 👻</a></li>
+                </ul>
+            </section>
+            <section>
+                <h2>Other Cool Stuff</h2>
+                <ul>
+                    <li><a href="messages.html">Send Anonymous Messages ✉️</a></li>
+                </ul>
+            </section>
         </main>
     </div>
-    <script>
-        const webhookUrl = "https://discord.com/api/webhooks/1308869350526025869/m56Q-tTjlUCG8EPhrwI-J6C5mOYQZmgYJ7N5O0ooPY-rxUyLKh2LBXS-frI8g-magzK0";
-
-        document.getElementById('messageForm').addEventListener('submit', async (e) => {
-            e.preventDefault();
-
-            const name = document.getElementById('nameInput').value.trim();
-            const message = document.getElementById('messageInput').value.trim();
-
-            if (message === '') {
-                alert('Please enter a message!');
-                return;
-            }
-
-            // Construct the message content
-            const fullMessage = name ? `**${name}**: ${message}` : message;
-
-            try {
-                const response = await fetch(webhookUrl, {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                    },
-                    body: JSON.stringify({
-                        content: fullMessage
-                    }),
-                });
-
-                if (response.ok) {
-                    document.getElementById('response').textContent = "Message sent successfully!";
-                    document.getElementById('nameInput').value = '';
-                    document.getElementById('messageInput').value = '';
-                } else {
-                    throw new Error('Failed to send message.');
-                }
-            } catch (error) {
-                console.error('Error:', error);
-                document.getElementById('response').textContent = "Error sending the message.";
-            }
-        });
-
-        function redirectToDiscord() {
-            window.open("https://discord.com/invite/coffeegang", "_blank");
-        }
-    </script>
 </body>
 </html>
