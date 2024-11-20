@@ -3,37 +3,69 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Meme Sharing Platform</title>
-    <link rel="stylesheet" href="styles.css">
+    <title>prettyfunny.xyz</title>
+    <style>
+        /* Inline CSS - Feel free to move to a separate CSS file */
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: #f4f4f9;
+            color: #333;
+            padding: 20px;
+            margin: 0;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+        }
+
+        p {
+            font-size: 1rem;
+            margin-bottom: 30px;
+            color: #555;
+        }
+
+        .link-container {
+            margin: 0 auto;
+            max-width: 400px;
+        }
+
+        .link-container a {
+            display: block;
+            text-decoration: none;
+            color: white;
+            background-color: #007BFF;
+            padding: 15px 20px;
+            margin: 10px 0;
+            border-radius: 5px;
+            font-size: 1.2rem;
+            transition: background-color 0.3s ease;
+        }
+
+        .link-container a:hover {
+            background-color: #0056b3;
+        }
+
+        footer {
+            margin-top: 30px;
+            font-size: 0.9rem;
+            color: #888;
+        }
+    </style>
 </head>
 <body>
-    <header>
-        <img src="assets/adasfsdgdfh.png" alt="Site Logo" class="logo">
-        <h1>Meme Feed</h1>
-    </header>
+    <h1>prettyfunny.xyz</h1>
+    <p>Welcome to my personal link hub! Check out these links:</p>
 
-    <main>
-        <section id="upload-section">
-            <h2>Upload a Meme</h2>
-            <form id="upload-form">
-                <label for="meme-image">Select Meme:</label>
-                <input type="file" id="meme-image" accept="image/*">
-                <label for="meme-caption">Add a Caption:</label>
-                <input type="text" id="meme-caption" placeholder="Enter a short caption">
-                <button type="submit">Upload</button>
-            </form>
-        </section>
-
-        <section id="feed">
-            <h2>Meme Feed</h2>
-            <div id="feed-container"></div>
-        </section>
-    </main>
+    <div class="link-container">
+        <a href="https://example.com" target="_blank">Example Link 1</a>
+        <a href="https://another-example.com" target="_blank">Example Link 2</a>
+        <a href="https://yet-another.com" target="_blank">Example Link 3</a>
+    </div>
 
     <footer>
-        <p>© 2024 Meme Sharing Platform</p>
+        <p>&copy; 2024 prettyfunny.xyz</p>
     </footer>
-
-    <script src="script.js"></script>
 </body>
 </html>
