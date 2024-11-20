@@ -3,69 +3,93 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>prettyfunny.xyz</title>
-    <style>
-        /* Inline CSS - Feel free to move to a separate CSS file */
+    <title>Anonymous Messages to Discord</title>
+     <link rel="stylesheet" href="style.css">
         body {
             font-family: Arial, sans-serif;
             text-align: center;
-            background-color: #f4f4f9;
-            color: #333;
+            background-color: #2c2f33;
+            color: #ffffff;
             padding: 20px;
-            margin: 0;
         }
-
         h1 {
-            font-size: 2.5rem;
-            margin-bottom: 10px;
+            color: #7289da;
         }
-
-        p {
-            font-size: 1rem;
-            margin-bottom: 30px;
-            color: #555;
-        }
-
-        .link-container {
-            margin: 0 auto;
+        form {
+            margin: 20px auto;
+            width: 80%;
             max-width: 400px;
+            background: #23272a;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
         }
-
-        .link-container a {
-            display: block;
-            text-decoration: none;
-            color: white;
-            background-color: #007BFF;
-            padding: 15px 20px;
+        input, button {
+            width: 100%;
+            padding: 10px;
             margin: 10px 0;
             border-radius: 5px;
-            font-size: 1.2rem;
-            transition: background-color 0.3s ease;
+            border: none;
+            font-size: 16px;
         }
-
-        .link-container a:hover {
-            background-color: #0056b3;
+        input {
+            background: #40444b;
+            color: white;
         }
-
-        footer {
-            margin-top: 30px;
-            font-size: 0.9rem;
-            color: #888;
+        button {
+            background-color: #7289da;
+            color: white;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+        button:hover {
+            background-color: #5b6eae;
         }
     </style>
 </head>
 <body>
-    <h1>prettyfunny.xyz</h1>
-    <p>Welcome to my personal link hub! Check out these links:</p>
+    <h1>Send an Anonymous Message</h1>
+    <p>Type your message below. It will be sent anonymously to our Discord channel.</p>
+    <form id="messageForm">
+        <input type="text" id="messageInput" placeholder="Enter your message..." required>
+        <button type="submit">Send Message</button>
+    </form>
+    <p id="response" style="color: lightgreen;"></p>
+    <script>
+        const webhookUrl = "https://discord.com/api/webhooks/1308869350526025869/m56Q-tTjlUCG8EPhrwI-J6C5mOYQZmgYJ7N5O0ooPY-rxUyLKh2LBXS-frI8g-magzK0";
 
-    <div class="link-container">
-        <a href="https://example.com" target="_blank">Example Link 1</a>
-        <a href="https://another-example.com" target="_blank">Example Link 2</a>
-        <a href="https://yet-another.com" target="_blank">Example Link 3</a>
-    </div>
+        document.getElementById('messageForm').addEventListener('submit', async (e) => {
+            e.preventDefault();
 
-    <footer>
-        <p>&copy; 2024 prettyfunny.xyz</p>
-    </footer>
+            const message = document.getElementById('messageInput').value;
+
+            if (message.trim() === '') {
+                alert('Please enter a message!');
+                return;
+            }
+
+            try {
+                const response = await fetch(webhookUrl, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        content: message
+                    }),
+                });
+
+                if (response.ok) {
+                    document.getElementById('response').textContent = "Message sent successfully!";
+                    document.getElementById('messageInput').value = '';
+                } else {
+                    throw new Error('Failed to send message.');
+                }
+            } catch (error) {
+                console.error('Error:', error);
+                document.getElementById('response').textContent = "Error sending the message.";
+            }
+        });
+    </script>
 </body>
 </html>
