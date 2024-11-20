@@ -74,28 +74,38 @@ main a:hover {
     color: #ffb74d;
 }
 
-/* Bendable Background */
+/* Bendable Styling */
 .bendable {
-    position: relative; /* To position the content inside */
-    display: inline-block;
+    position: relative;
     padding: 20px;
     border-radius: 10px;
-    background: linear-gradient(45deg, #ff9a9e, #fad0c4); /* Highlighted background */
-    box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.3);
+    background: linear-gradient(45deg, #ff9a9e, #fad0c4); /* Highlighted gradient background */
+    box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.3);
+    transform-style: preserve-3d; /* For 3D effect */
     transition: transform 0.2s ease-out;
     will-change: transform;
-    overflow: hidden; /* Ensures the content won't spill */
+    overflow: hidden; /* Prevents overflow issues */
 }
 
-/* Bendable Content */
-.bendable-content {
-    position: relative;
-    z-index: 2; /* Keeps the text above the background */
-    color: inherit;
+/* Bendable Text Content */
+.bendable h1, 
+.bendable p, 
+.bendable h2, 
+.bendable ul {
+    position: relative; /* Keep text above the bending background */
+    z-index: 2;
+    color: inherit; /* Ensure text color remains readable */
     text-align: center;
 }
 
-/* Optional for better visuals */
-body {
-    background: linear-gradient(135deg, #ff8a65, #ff7043);
+/* Optional: Anchor link styling (visual enhancement) */
+a {
+    text-decoration: none;
+    color: #ffd54f;
+    font-weight: bold;
+    transition: color 0.3s ease;
+}
+
+a:hover {
+    color: #ffb74d;
 }
