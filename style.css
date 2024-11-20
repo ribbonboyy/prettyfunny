@@ -19,27 +19,32 @@ body {
 }
 
 /* Container Styling */
-h1 {
+.container {
+    text-align: center;
+    background: rgba(0, 0, 0, 0.8);
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.5);
+    width: 100%;
+    max-width: 500px;
+}
+
+header h1 {
     color: #7289da;
     font-size: 2rem;
-    margin-bottom: 20px;
+    margin-bottom: 10px;
     text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.5);
 }
 
-p {
+header p {
     font-size: 1rem;
-    margin-bottom: 15px;
     color: #b9bbbe;
+    margin-bottom: 20px;
 }
 
 /* Form Styling */
 form {
-    background: rgba(0, 0, 0, 0.8);
-    padding: 25px;
-    border-radius: 10px;
-    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.5);
-    width: 100%;
-    max-width: 400px;
+    margin-bottom: 20px;
 }
 
 input {
@@ -77,20 +82,39 @@ button:hover {
     transform: scale(1.02);
 }
 
+/* Join Button */
+.join-button {
+    margin-top: 10px;
+    background: #ff5e57;
+    font-size: 14px;
+    padding: 10px 20px;
+    border-radius: 5px;
+    border: none;
+    color: white;
+    cursor: pointer;
+    transition: background 0.3s, transform 0.2s;
+}
+
+.join-button:hover {
+    background: #e04a45;
+    transform: scale(1.05);
+}
+
 /* Success Message Styling */
 #response {
     margin-top: 10px;
     font-size: 1rem;
     font-weight: bold;
+    color: lightgreen;
 }
 
 /* Responsive Design */
 @media (max-width: 480px) {
-    h1 {
+    header h1 {
         font-size: 1.5rem;
     }
-    form {
-        padding: 20px;
+    header p {
+        font-size: 0.9rem;
     }
     input, button {
         font-size: 14px;
