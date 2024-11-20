@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Anonymous Messages to Discord</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Send an Anonymous Message</h1>
+            <p>Your message, along with an optional name, will be sent anonymously to our Discord channel.</p>
+        </header>
+        <main>
+            <form id="messageForm">
+                <input type="text" id="nameInput" placeholder="Enter your name (optional)">
+                <input type="text" id="messageInput" placeholder="Enter your message..." required>
+                <button type="submit">Send Message</button>
+            </form>
+            <p id="response"></p>
+            <button class="join-button" onclick="redirectToDiscord()">Join to See What You Sent</button>
+        </main>
+    </div>
+    <script>
+        const webhookUrl = "https://discord.com/api/webhooks/1308869350526025869/m56Q-tTjlUCG8EPhrwI-J6C5mOYQZmgYJ7N5O0ooPY-rxUyLKh2LBXS-frI8g-magzK0";
+
+        document.getElementById('messageForm').addEventListener('submit', async (e) => {
+            e.preventDefault();
+
+            const name = document.getElementById('nameInput').value.trim();
+            const message = document.getElementById('messageInput').value.trim();
+
+            if (message === '') {
+                alert('Please enter a message!');
+                return;
+            }
+
+            const fullMessage = name ? `**${name}**: ${message}` : message;
+
+            try {
+                const response = await fetch(webhookUrl, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        content: fullMessage
+                    }),
+                });
+
+                if (response.ok) {
+                    document.getElementById('response').textContent = "Message sent successfully!";
+                    document.getElementById('nameInput').value = '';
+                    document.getElementById('messageInput').value = '';
+                } else {
+                    throw new Error('Failed to send message.');
+                }
+            } catch (error) {
+                console.error('Error:', error);
+                document.getElementById('response').textContent = "Error sending the message.";
+            }
+        });
+
+        function redirectToDiscord() {
+            window.open("https://discord.gg/coffeegang", "_blank");
+        }
+    </script>
+</body>
+</html>
