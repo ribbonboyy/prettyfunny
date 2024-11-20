@@ -9,17 +9,17 @@
 <body>
     <div class="container">
         <header>
-            <h1>Send an Anonymous Message</h1>
-            <p>Your message, along with an optional name, will be sent anonymously to our Discord channel.</p>
+            <h1>Send a message to our server!</h1>
+            <p>here, you can send an anonymous message to our server! you can always attach your name</p>
         </header>
         <main>
             <form id="messageForm">
-                <input type="text" id="nameInput" placeholder="Enter your name (optional)">
-                <input type="text" id="messageInput" placeholder="Enter your message..." required>
+                <input type="text" id="nameInput" placeholder="enter your name (optional)">
+                <input type="text" id="messageInput" placeholder="enter your message (required)" required>
                 <button type="submit">Send Message</button>
             </form>
             <p id="response"></p>
-            <button class="join-button" onclick="redirectToDiscord()">Join to See What You Sent</button>
+            <button class="join-button" onclick="redirectToDiscord()">see what you sent</button>
         </main>
     </div>
     <script>
