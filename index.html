@@ -26,18 +26,7 @@
 
         <section id="feed">
             <h2>Meme Feed</h2>
-            <div id="feed-container">
-                <!-- Sample meme card -->
-                <div class="meme-card">
-                    <img src="assets/memes/sample-meme.jpg" alt="Meme" class="meme-image">
-                    <p class="caption">When you realize it's Monday...</p>
-                    <div class="reaction-bar">
-                        <button class="like-button">👍 <span class="like-count">0</span></button>
-                        <button class="dislike-button">👎 <span class="dislike-count">0</span></button>
-                    </div>
-                </div>
-                <!-- Add memes dynamically -->
-            </div>
+            <div id="feed-container"></div>
         </section>
     </main>
 
@@ -45,51 +34,6 @@
         <p>© 2024 Meme Sharing Platform</p>
     </footer>
 
-    <script>
-        // Mock "Upload" and Like/Dislike functionality
-        const uploadForm = document.getElementById('upload-form');
-        const feedContainer = document.getElementById('feed-container');
-
-        uploadForm.addEventListener('submit', (e) => {
-            e.preventDefault();
-
-            const memeInput = document.getElementById('meme-image');
-            const captionInput = document.getElementById('meme-caption');
-            const file = memeInput.files[0];
-            const caption = captionInput.value;
-
-            if (file && caption) {
-                const reader = new FileReader();
-                reader.onload = (e) => {
-                    const newMemeCard = `
-                        <div class="meme-card">
-                            <img src="${e.target.result}" alt="Meme" class="meme-image">
-                            <p class="caption">${caption}</p>
-                            <div class="reaction-bar">
-                                <button class="like-button">👍 <span class="like-count">0</span></button>
-                                <button class="dislike-button">👎 <span class="dislike-count">0</span></button>
-                            </div>
-                        </div>
-                    `;
-                    feedContainer.insertAdjacentHTML('afterbegin', newMemeCard);
-                };
-                reader.readAsDataURL(file);
-                memeInput.value = '';
-                captionInput.value = '';
-            } else {
-                alert('Please upload a meme and add a caption.');
-            }
-        });
-
-        feedContainer.addEventListener('click', (e) => {
-            if (e.target.classList.contains('like-button')) {
-                const count = e.target.querySelector('.like-count');
-                count.textContent = parseInt(count.textContent) + 1;
-            } else if (e.target.classList.contains('dislike-button')) {
-                const count = e.target.querySelector('.dislike-count');
-                count.textContent = parseInt(count.textContent) + 1;
-            }
-        });
-    </script>
+    <script src="script.js"></script>
 </body>
 </html>
